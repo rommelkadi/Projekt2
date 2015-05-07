@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -23,15 +25,19 @@ public class Game extends Application{
 			BorderPane root = new BorderPane();
 			Scene scene1 = new Scene(root,800,500, Color.LIGHTGREY);
 			scene1.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			//Reeglid
 			BorderPane juur = new BorderPane();
+			//Mängu osa
 			BorderPane juur2= new BorderPane();
+			
 			Scene scene2 = new Scene(juur,800,500, Color.WHITE);
 			scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
 			Scene scene3 = new Scene(juur2,800,500, Color.ANTIQUEWHITE);
 			scene3.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
-			//Graafika veits kole veel, aga küll saab 
-			Text text1 = new Text(320,50, "LOGOQUIZ");
+			//Algus Graafika veits kole veel, aga küll saab 
+			Text text1 = new Text(root.getWidth()/2, 50,"LOGOQUIZ");
 			text1.setFont(Font.font ("Calibri", 50));
 			root.setTop(text1);
 			Button reeglid = new Button("Reeglid");
@@ -40,10 +46,24 @@ public class Game extends Application{
 			vbox.getChildren().addAll(alusta,reeglid);
 			root.setCenter(vbox);
 			
+			Text reegliText = new Text(juur.getWidth()/2, juur.getHeight()/2, "Mängu reeglid on väga lihtsad. Vajuta logole ning kirjuta, millega on tegu.");
+			reegliText.setFont(Font.font ("Verdana", 20));
+			juur.setCenter(reegliText);
 			Button tagasi = new Button("Tagasi");
 			Button tagasi2 = new Button("Tagasi");
 			juur.setTop(tagasi);
 			juur2.setTop(tagasi2);
+			
+			//Mängu osa
+			//Image logo = new Image("C:/Users/Kadi/git/Projekt2.1/Projekt2/src/application/logo-1.jpg");
+			
+			Image logo = new Image("https://lh3.ggpht.com/O0aW5qsyCkR2i7Bu-jUU1b5BWA_NygJ6ui4MgaAvL7gfqvVWqkOBscDaq4pn-vkwByUx=w300");
+			ImageView iv1 = new ImageView();
+			iv1.setImage(logo);
+			iv1.setFitWidth(100);
+			iv1.setFitHeight(100);
+			juur2.setCenter(iv1);
+			
 			
 			tagasi.setOnAction(new EventHandler<ActionEvent>() {
 
