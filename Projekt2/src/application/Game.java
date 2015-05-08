@@ -24,17 +24,20 @@ public class Game extends Application{
 		
 			
 			BorderPane root = new BorderPane();
-			Scene scene1 = new Scene(root,800,500, Color.LIGHTGREY);
+			root.setId("taust");
+			Scene scene1 = new Scene(root,800,500);
 			scene1.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			//Reeglid
 			BorderPane juur = new BorderPane();
+			juur.setId("taust");
 			//Mängu osa
 			BorderPane juur2= new BorderPane();
+			juur2.setId("taust");
 			
-			Scene scene2 = new Scene(juur,800,500, Color.WHITE);
+			Scene scene2 = new Scene(juur,800,500);
 			scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
-			Scene scene3 = new Scene(juur2,800,500, Color.ANTIQUEWHITE);
+			Scene scene3 = new Scene(juur2,800,500);
 			scene3.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			//Algus Graafika veits kole veel, aga küll saab 
@@ -54,8 +57,10 @@ public class Game extends Application{
 			Text reegliText = new Text(juur.getWidth()/2, juur.getHeight()/2, "Mängu reeglid on väga lihtsad. Vajuta logole ning kirjuta, millega on tegu.");
 			reegliText.setFont(Font.font ("Verdana", 20));
 			juur.setCenter(reegliText);
-			Button tagasi = new Button("Tagasi");
-			Button tagasi2 = new Button("Tagasi");
+			Button tagasi = new Button("Tagasi avalehele");
+			Button tagasi2 = new Button("Tagasi avalehele");
+			tagasi.setId("tagasi");
+			tagasi2.setId("tagasi");
 			
 			juur.setTop(tagasi);
 			juur2.setTop(tagasi2);

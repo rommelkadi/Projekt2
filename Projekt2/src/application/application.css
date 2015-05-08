@@ -6,6 +6,10 @@
 .backgroud {
 	-fx-background-color: white;
 }
+#taust{
+	-fx-background-color: white;
+}
+
 #avaNupp {
     -fx-background-color: 
         linear-gradient(#ffd65b, #e68400),
@@ -28,5 +32,16 @@
 	-fx-stroke: #e68400;
 	
 }
-
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#tagasi {
+	-fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50%, white 100%),
+        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 40;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-font-size: 12;
+    -fx-font-family:"Calibri";
+    -fx-font-weight:bold;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
