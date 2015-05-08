@@ -37,10 +37,7 @@ public class Game extends Application{
 			juur.setId("taust");
 			//Mängu osa
 			BorderPane juur2= new BorderPane();
-			juur2.setId("taust");
-			//FlowPane flow = new FlowPane();
-			//juur2.setCenter(flow);
-			
+			juur2.setId("taust");	
 			
 			Scene scene2 = new Scene(juur,800,500);
 			scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -74,15 +71,24 @@ public class Game extends Application{
 			juur2.setTop(tagasi2);
 			
 			//Mängu osa
-			// logo = new Image("logo-1.jpg");
 			
-			Image logo = new Image("https://lh3.ggpht.com/O0aW5qsyCkR2i7Bu-jUU1b5BWA_NygJ6ui4MgaAvL7gfqvVWqkOBscDaq4pn-vkwByUx=w300");
-			ImageView iv1 = new ImageView();
-			iv1.setImage(logo);
-			iv1.setFitWidth(100);
-			iv1.setFitHeight(100);
-			juur2.setCenter(iv1);
+			FlowPane flow = new FlowPane();
+			juur2.setCenter(flow);
+			flow.setPadding(new Insets(6, 5, 6, 5));
+			flow.setVgap(4);
+			flow.setHgap(4);
+			flow.setPrefWrapLength(200);
+			ImageView logod[] = new ImageView[8];
 			
+			//Praegu on üks logo ainult siin järjest aga pärast peab while tsükliga panema 5 tükki ja 
+			//siis võiks olla nii, et kui pildile vajutad, siis ilmub alla see input aken, kuhu saab vastuse kirjutada
+			//juhul kui seda väga raske teha pole, kui on, siis teeme lihtsamalt kuidagi
+			for (int i=0; i<5; i++){
+				logod[i] = new ImageView(new Image("file:/C:/Users/Kadi/git/Projekt2.1/Projekt2/src/application/logo-1.png"));
+				logod[i].setFitWidth(150);
+				logod[i].setFitHeight(150);
+				flow.getChildren().add(logod[i]);
+			}
 			
 			tagasi.setOnAction(new EventHandler<ActionEvent>() {
 
