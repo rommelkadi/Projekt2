@@ -2,6 +2,7 @@ package application;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -37,25 +38,30 @@ public class Game extends Application{
 			scene3.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			//Algus Graafika veits kole veel, aga küll saab 
-			Text text1 = new Text(root.getWidth()/2, 50,"LOGOQUIZ");
-			text1.setFont(Font.font ("Calibri", 50));
-			root.setTop(text1);
+			Text text1 = new Text("LOGOQUIZ");
+			//root.setTop(text1);
+			//root.setAlignment(text1, Pos.TOP_CENTER);
+			text1.setId("avaTekst");
 			Button reeglid = new Button("Reeglid");
 			Button alusta = new Button("Alusta mängu");
+			reeglid.setId("avaNupp");
+			alusta.setId("avaNupp");
 			VBox vbox = new VBox(8); 
-			vbox.getChildren().addAll(alusta,reeglid);
+			vbox.getChildren().addAll(text1, alusta,reeglid);
 			root.setCenter(vbox);
+			vbox.setAlignment(Pos.CENTER);
 			
 			Text reegliText = new Text(juur.getWidth()/2, juur.getHeight()/2, "Mängu reeglid on väga lihtsad. Vajuta logole ning kirjuta, millega on tegu.");
 			reegliText.setFont(Font.font ("Verdana", 20));
 			juur.setCenter(reegliText);
 			Button tagasi = new Button("Tagasi");
 			Button tagasi2 = new Button("Tagasi");
+			
 			juur.setTop(tagasi);
 			juur2.setTop(tagasi2);
 			
 			//Mängu osa
-			//Image logo = new Image("C:/Users/Kadi/git/Projekt2.1/Projekt2/src/application/logo-1.jpg");
+			// logo = new Image("logo-1.jpg");
 			
 			Image logo = new Image("https://lh3.ggpht.com/O0aW5qsyCkR2i7Bu-jUU1b5BWA_NygJ6ui4MgaAvL7gfqvVWqkOBscDaq4pn-vkwByUx=w300");
 			ImageView iv1 = new ImageView();
