@@ -43,7 +43,7 @@ public class Game extends Application{
 			juur.setId("taust");
 			//Mängu osa
 			BorderPane juur2= new BorderPane();
-			juur2.setId("taust");	
+				
 			
 			Scene scene2 = new Scene(juur,800,500);
 			scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -157,7 +157,7 @@ public class Game extends Application{
 			         event.consume();
 			     }
 			});
-			logod[1].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+			logod[1].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
 			     @Override
 			     public void handle(MouseEvent event) {
@@ -187,7 +187,7 @@ public class Game extends Application{
 			         event.consume();
 			     }
 			});
-			logod[2].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+			logod[2].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
 			     @Override
 			     public void handle(MouseEvent event) {
@@ -215,7 +215,7 @@ public class Game extends Application{
 			         event.consume();
 			     }
 			});
-			logod[3].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+			logod[3].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
 			     @Override
 			     public void handle(MouseEvent event) {
@@ -243,7 +243,7 @@ public class Game extends Application{
 		        			    });
 			     }
 			});
-			logod[4].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+			logod[4].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
 			     @Override
 			     public void handle(MouseEvent event) {
