@@ -2,13 +2,12 @@ package application;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -21,11 +20,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Game extends Application{
 	public void start(Stage peaLava) {
@@ -65,20 +65,32 @@ public class Game extends Application{
 			root.setCenter(vbox);
 			vbox.setAlignment(Pos.CENTER);
 			
+			//Ekraanide ülemisele osale HBox, et saaks lisada 2 nuppu üles
+			HBox hbox = new HBox();
+			juur2.setTop(hbox);
+			hbox.setId("yles");
+			
 			Text reegliText = new Text(juur.getWidth()/2, juur.getHeight()/2, "Mängu reeglid on väga lihtsad. Vajuta logole ning kirjuta, millega on tegu.");
 			reegliText.setFont(Font.font ("Verdana", 20));
 			juur.setCenter(reegliText);
 			Button tagasi = new Button("Tagasi avalehele");
-			Button tagasi2 = new Button("Tagasi avalehele");
 			tagasi.setId("tagasi");
+			juur.setTop(tagasi);
+			
+			Button tagasi2 = new Button("Tagasi avalehele");
+			//Kontrolli jaoks üks nupp esialgu
+			Button valmis = new Button("Valmis");
+			valmis.setId("tagasi");
 			tagasi2.setId("tagasi");
 			
-			juur.setTop(tagasi);
-			juur2.setTop(tagasi2);
+			hbox.getChildren().addAll(tagasi2, valmis);
+			//juur2.setTop(tagasi2);
+			
 			
 			//Mängu osa
 			
 			FlowPane flow = new FlowPane();
+			flow.setId("keskmine");
 			juur2.setCenter(flow);
 			flow.setPadding(new Insets(6, 5, 6, 5));
 			flow.setVgap(4);
@@ -86,6 +98,7 @@ public class Game extends Application{
 			flow.setPrefWrapLength(200);
 			
 			GridPane texts = new GridPane();
+			texts.setId("alumine");
 			juur2.setBottom(texts);
 			texts.setPadding(new Insets(6,5,6,5));
 			texts.setVgap(4);
@@ -258,13 +271,43 @@ public class Game extends Application{
 			         event.consume();
 			     }
 			});
-			
 			//Kui kõik logogd on nähtamatud, ehk õigesti vastatud, siis kuvab ekraanile TUBLI ja Uue leveli nupu... EI TÖÖTA VEEL
-			if(logod[0].isVisible()==false && logod[1].isVisible()==false && logod[2].isVisible()==false && logod[3].isVisible()==false && logod[4].isVisible()==false){
-				Text tubliText = new Text("Tubli! Teadsid kõiki logosid. Liigu nüüd edasi järgmise leveli juurde");
-				flow.getChildren().add(tubliText);
-				System.out.println("TUBLI");
-			}
+			valmis.setOnAction(new EventHandler<ActionEvent>(){
+				public void handle (ActionEvent e) {
+					if(logod[0].isVisible()==false && logod[1].isVisible()==false && logod[2].isVisible()==false && logod[3].isVisible()==false && logod[4].isVisible()==false){
+						Text tubliText = new Text("Tubli! Teadsid kõiki logosid. Liigu nüüd edasi järgmise leveli juurde");
+						tubliText.setId("informatsioonTekst");
+						Button uusLevel = new Button("Järgmised logod");
+						uusLevel.setAlignment(Pos.BOTTOM_CENTER);
+						uusLevel.setId("uusLevel");
+						flow.getChildren().addAll(tubliText, uusLevel);
+						
+						uusLevel.setOnAction(new EventHandler<ActionEvent>() {
+
+				            public void handle(ActionEvent event) {
+				                peaLava.setScene(scene3);
+				                Alusta a = new Alusta();
+				                a.alusta();
+				                
+				            }
+				        });
+					}
+					else{
+						//Siin bug sees, peaks eraldi kontrollima, kas seda nuppu on juba korra vajutatud, kui on siis tuleks fade transition uuesti käima panna.
+						Text pooleliText = new Text("Ei saa edasi liikuda, sul on veel osad vastamata!");
+						pooleliText.setId("informatsioonTekst");
+						flow.getChildren().add(pooleliText);
+						FadeTransition ft = new FadeTransition(Duration.millis(5000));
+						ft.setFromValue(1.0);
+						ft.setToValue(0.0);
+						
+						ft.setNode(pooleliText);
+						ft.play();
+					}
+						
+				}
+			});
+			
 			
 			tagasi.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -303,6 +346,8 @@ public class Game extends Application{
 	                
 	            }
 	        });
+			
+			
 			peaLava.setScene(scene1);
 			peaLava.setResizable(false);
 			peaLava.setTitle("Logoquiz");
