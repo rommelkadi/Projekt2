@@ -94,13 +94,8 @@ public class Game extends Application{
 				texts.getColumnConstraints().add(new ColumnConstraints(150));
 				}
 			
-			
 			ImageView logod[] = new ImageView[8];
 			TextField text[] = new TextField[8];
-			
-			//Praegu on üks logo ainult siin järjest aga pärast peab while tsükliga panema 5 tükki ja 
-			//siis võiks olla nii, et kui pildile vajutad, siis ilmub alla see input aken, kuhu saab vastuse kirjutada
-			//juhul kui seda väga raske teha pole, kui on, siis teeme lihtsamalt kuidagi
 			
 			ArrayList<String> logs = new ArrayList<String>();
 			String[] logs1 = new String[]{"logo-1.png","logo-2.png","logo-3.png","logo-4.png","logo-5.png"};
@@ -108,7 +103,7 @@ public class Game extends Application{
 			
 			//panin praegu nii logode vastused arraysse, et texfieldi tööd testida, 
 			//hiljem vist peame kuidagi mugavamalt lahendama selle
-			String[] vastused = new String[]{"lays","chrome","android","apple","nike"};			
+			String[] vastused = new String[]{"chrome","lays","android","apple","nike"};			
 			
 			// minu path enda jaoks :D "file:/C:/Users/Kristi Koppel/workspace/Mäng/src/Mäng/Logod/"
 			for (int i=0; i<5; i++){
@@ -136,7 +131,7 @@ public class Game extends Application{
 		        			            if (ke.getCode().equals(KeyCode.ENTER))
 		        			            {
 		        			            	String vast  = text[0].getText();
-		        					         if (vast.equals(vastused[0])){
+		        					         if (vast.equalsIgnoreCase(vastused[0])){
 		        					        	 System.out.println("ÕIGE");
 		        					        	 logod[0].setVisible(false);
 		        					        	 text[0].setVisible(false);}
@@ -165,7 +160,7 @@ public class Game extends Application{
 			        			            if (ke.getCode().equals(KeyCode.ENTER))
 			        			            {
 			        			            	String vast  = text[1].getText();
-			        					         if (vast.equals(vastused[1])){
+			        					         if (vast.equalsIgnoreCase(vastused[1])){
 			        					        	 System.out.println("ÕIGE");
 			        					        	 logod[1].setVisible(false);
 			        					        	 text[1].setVisible(false);}
@@ -191,10 +186,10 @@ public class Game extends Application{
 		        			        @Override
 		        			        public void handle(KeyEvent ke)
 		        			        {
-		        			            if (ke.getCode().equals(KeyCode.ENTER))
+		        			        	if (ke.getCode().equals(KeyCode.ENTER))
 		        			            {
 		        			            	String vast  = text[2].getText();
-		        					         if (vast.equals(vastused[2])){
+		        					         if (vast.equalsIgnoreCase(vastused[2])){
 		        					        	 System.out.println("ÕIGE");
 		        					        	 logod[2].setVisible(false);
 		        					        	 text[2].setVisible(false);}
@@ -223,7 +218,7 @@ public class Game extends Application{
 		        			            if (ke.getCode().equals(KeyCode.ENTER))
 		        			            {
 		        			            	String vast  = text[3].getText();
-		        					         if (vast.equals(vastused[3])){
+		        					         if (vast.equalsIgnoreCase(vastused[3])){
 		        					        	 System.out.println("ÕIGE");
 		        					        	 logod[3].setVisible(false);
 		        					        	 text[3].setVisible(false);}
@@ -250,7 +245,7 @@ public class Game extends Application{
 		        			            if (ke.getCode().equals(KeyCode.ENTER))
 		        			            {
 		        			            	String vast  = text[4].getText();
-		        					         if (vast.equals(vastused[4])){
+		        					         if (vast.equalsIgnoreCase(vastused[4])){
 		        					        	 System.out.println("ÕIGE");
 		        					        	 logod[4].setVisible(false);
 		        					        	 text[4].setVisible(false);}
@@ -264,7 +259,12 @@ public class Game extends Application{
 			     }
 			});
 			
-			
+			//Kui kõik logogd on nähtamatud, ehk õigesti vastatud, siis kuvab ekraanile TUBLI ja Uue leveli nupu... EI TÖÖTA VEEL
+			if(logod[0].isVisible()==false && logod[1].isVisible()==false && logod[2].isVisible()==false && logod[3].isVisible()==false && logod[4].isVisible()==false){
+				Text tubliText = new Text("Tubli! Teadsid kõiki logosid. Liigu nüüd edasi järgmise leveli juurde");
+				flow.getChildren().add(tubliText);
+				System.out.println("TUBLI");
+			}
 			
 			tagasi.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -304,7 +304,6 @@ public class Game extends Application{
 	            }
 	        });
 			peaLava.setScene(scene1);
-			//Vähe mugavam, ei pea proportsioonidega mässama kui akent muuta ei saa = D
 			peaLava.setResizable(false);
 			peaLava.setTitle("Logoquiz");
 			peaLava.show();
