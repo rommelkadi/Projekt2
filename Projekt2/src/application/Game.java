@@ -1,5 +1,6 @@
 package application;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -10,9 +11,14 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -78,17 +84,187 @@ public class Game extends Application{
 			flow.setVgap(4);
 			flow.setHgap(4);
 			flow.setPrefWrapLength(200);
+			
+			GridPane texts = new GridPane();
+			juur2.setBottom(texts);
+			texts.setPadding(new Insets(6,5,6,5));
+			texts.setVgap(4);
+			texts.setHgap(4);
+			for(int i = 0; i<5; i++){
+				texts.getColumnConstraints().add(new ColumnConstraints(150));
+				}
+			
+			
 			ImageView logod[] = new ImageView[8];
+			TextField text[] = new TextField[8];
 			
 			//Praegu on üks logo ainult siin järjest aga pärast peab while tsükliga panema 5 tükki ja 
 			//siis võiks olla nii, et kui pildile vajutad, siis ilmub alla see input aken, kuhu saab vastuse kirjutada
 			//juhul kui seda väga raske teha pole, kui on, siis teeme lihtsamalt kuidagi
+			
+			ArrayList<String> logs = new ArrayList<String>();
+			String[] logs1 = new String[]{"logo-1.png","logo-2.png","logo-3.png","logo-4.png","logo-5.png"};
+			logs.addAll(Arrays.asList(logs1));
+			
+			//panin praegu nii logode vastused arraysse, et texfieldi tööd testida, 
+			//hiljem vist peame kuidagi mugavamalt lahendama selle
+			String[] vastused = new String[]{"lays","chrome","android","apple","nike"};			
+			
+			// minu path enda jaoks :D "file:/C:/Users/Kristi Koppel/workspace/Mäng/src/Mäng/Logod/"
 			for (int i=0; i<5; i++){
-				logod[i] = new ImageView(new Image("file:/C:/Users/Kadi/git/Projekt2.1/Projekt2/src/application/logo-1.png"));
+				logod[i] = new ImageView(new Image("file:/C:/Users/Kadi/git/Projekt2.1/Projekt2/src/application/" + logs.get(i)));
 				logod[i].setFitWidth(150);
 				logod[i].setFitHeight(150);
 				flow.getChildren().add(logod[i]);
+				
+				text[i] = new TextField();
+				text[i].setPrefWidth(150);				
 			}
+			
+			logod[0].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+			     @Override
+			     public void handle(MouseEvent event) {
+			    	 
+			         System.out.println("vajutasin");
+			         texts.add(text[0],0,0);
+			         text[0].setOnKeyPressed(new EventHandler<KeyEvent>()
+		        			    {
+		        			        @Override
+		        			        public void handle(KeyEvent ke)
+		        			        {
+		        			            if (ke.getCode().equals(KeyCode.ENTER))
+		        			            {
+		        			            	String vast  = text[0].getText();
+		        					         if (vast.equals(vastused[0])){
+		        					        	 System.out.println("ÕIGE");
+		        					        	 logod[0].setVisible(false);
+		        					        	 text[0].setVisible(false);}
+		        					         else{
+		        					        	 System.out.println("Vale :(");
+		        					         }
+		        			            }
+		        			        }
+		        			    });
+			         event.consume();
+			     }
+			});
+			logod[1].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+			     @Override
+			     public void handle(MouseEvent event) {
+			    	 
+			         System.out.println("vajutasin");
+			         texts.add(text[1], 1, 0);
+			         
+			        	 text[1].setOnKeyPressed(new EventHandler<KeyEvent>()
+			        			    {
+			        			        @Override
+			        			        public void handle(KeyEvent ke)
+			        			        {
+			        			            if (ke.getCode().equals(KeyCode.ENTER))
+			        			            {
+			        			            	String vast  = text[1].getText();
+			        					         if (vast.equals(vastused[1])){
+			        					        	 System.out.println("ÕIGE");
+			        					        	 logod[1].setVisible(false);
+			        					        	 text[1].setVisible(false);}
+			        					         else{
+			        					        	 System.out.println("Vale :(");
+			        					         }
+			        			            }
+			        			        }
+			        			    });
+			         
+			         event.consume();
+			     }
+			});
+			logod[2].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+			     @Override
+			     public void handle(MouseEvent event) {
+			    	 
+			         System.out.println("vajutasin");
+			         texts.add(text[2], 2, 0);
+			         text[2].setOnKeyPressed(new EventHandler<KeyEvent>()
+		        			    {
+		        			        @Override
+		        			        public void handle(KeyEvent ke)
+		        			        {
+		        			            if (ke.getCode().equals(KeyCode.ENTER))
+		        			            {
+		        			            	String vast  = text[2].getText();
+		        					         if (vast.equals(vastused[2])){
+		        					        	 System.out.println("ÕIGE");
+		        					        	 logod[2].setVisible(false);
+		        					        	 text[2].setVisible(false);}
+		        					         else{
+		        					        	 System.out.println("Vale :(");
+		        					         }
+		        			            }
+		        			        }
+		        			    });
+			         event.consume();
+			     }
+			});
+			logod[3].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+			     @Override
+			     public void handle(MouseEvent event) {
+			    	 
+			         System.out.println("vajutasin");
+			         texts.add(text[3], 3, 0);
+			         event.consume();
+			         text[3].setOnKeyPressed(new EventHandler<KeyEvent>()
+		        			    {
+		        			        @Override
+		        			        public void handle(KeyEvent ke)
+		        			        {
+		        			            if (ke.getCode().equals(KeyCode.ENTER))
+		        			            {
+		        			            	String vast  = text[3].getText();
+		        					         if (vast.equals(vastused[3])){
+		        					        	 System.out.println("ÕIGE");
+		        					        	 logod[3].setVisible(false);
+		        					        	 text[3].setVisible(false);}
+		        					         else{
+		        					        	 System.out.println("Vale :(");
+		        					         }
+		        			            }
+		        			        }
+		        			    });
+			     }
+			});
+			logod[4].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+			     @Override
+			     public void handle(MouseEvent event) {
+			    	 
+			         System.out.println("vajutasin");
+			         texts.add(text[4], 4, 0);
+			         text[4].setOnKeyPressed(new EventHandler<KeyEvent>()
+		        			    {
+		        			        @Override
+		        			        public void handle(KeyEvent ke)
+		        			        {
+		        			            if (ke.getCode().equals(KeyCode.ENTER))
+		        			            {
+		        			            	String vast  = text[4].getText();
+		        					         if (vast.equals(vastused[4])){
+		        					        	 System.out.println("ÕIGE");
+		        					        	 logod[4].setVisible(false);
+		        					        	 text[4].setVisible(false);}
+		        					         else{
+		        					        	 System.out.println("Vale :(");
+		        					         }
+		        			            }
+		        			        }
+		        			    });
+			         event.consume();
+			     }
+			});
+			
+			
 			
 			tagasi.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -106,9 +282,7 @@ public class Game extends Application{
 	                
 	            }
 	        });
-			//Siin vahetab stseeni ning peale seda läheb uude klassi täitma seda mis me sinna lõpuks kirjutame
-			//Aga ma pole päris kindel kuidas me saame teises klassis graafiliselt muuta asju, ma usun 
-			// et minu lähenemine ei pruugi olla ka kõige õigem. Eks sa vaata üle, et mis võiks muuta 
+			
 			
 			
 			reeglid.setOnAction(new EventHandler<ActionEvent>() {
