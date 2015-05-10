@@ -43,13 +43,23 @@ public class Game extends Application{
 			juur.setId("taust");
 			//Mängu osa
 			BorderPane juur2= new BorderPane();
-				
+			
+			//Uus stseen 2. leveli jaoks. UUE leveli sisu on level2 klassis
+			BorderPane juur4 = new BorderPane();
+			juur4.setId("taust");
+			Scene scene4 = new Scene(juur4, 800, 500);
+			scene4.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
 			
 			Scene scene2 = new Scene(juur,800,500);
 			scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			Scene scene3 = new Scene(juur2,800,500);
 			scene3.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
+			
+			
+			
 			
 			//Algus Graafika veits kole veel, aga küll saab 
 			Text text1 = new Text("LOGOQUIZ");
@@ -84,7 +94,7 @@ public class Game extends Application{
 			tagasi2.setId("tagasi");
 			
 			hbox.getChildren().addAll(tagasi2, valmis);
-			//juur2.setTop(tagasi2);
+			
 			
 			
 			//Mängu osa
@@ -126,7 +136,8 @@ public class Game extends Application{
 				flow.getChildren().add(logod[i]);
 				
 				text[i] = new TextField();
-				text[i].setPrefWidth(150);				
+				text[i].setPrefWidth(150);		
+				
 			}
 			
 			logod[0].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -285,24 +296,28 @@ public class Game extends Application{
 						uusLevel.setOnAction(new EventHandler<ActionEvent>() {
 
 				            public void handle(ActionEvent event) {
-				                peaLava.setScene(scene3);
-				                Alusta a = new Alusta();
-				                a.alusta();
+				                peaLava.setScene(scene4);				            	
+				                Level2 a = new Level2();
+				                a.level2();
 				                
 				            }
 				        });
+						
 					}
 					else{
-						//Siin bug sees, peaks eraldi kontrollima, kas seda nuppu on juba korra vajutatud, kui on siis tuleks fade transition uuesti käima panna.
+						int counter = 0;
 						Text pooleliText = new Text("Ei saa edasi liikuda, sul on veel osad vastamata!");
-						pooleliText.setId("informatsioonTekst");
 						flow.getChildren().add(pooleliText);
+						pooleliText.setId("informatsioonTekst");
 						FadeTransition ft = new FadeTransition(Duration.millis(5000));
-						ft.setFromValue(1.0);
-						ft.setToValue(0.0);
-						
-						ft.setNode(pooleliText);
-						ft.play();
+						if (counter == 0) {
+							ft.setFromValue(1.0);
+							ft.setToValue(0.0);
+							ft.setNode(pooleliText);
+							ft.play();
+							
+						}
+							
 					}
 						
 				}
