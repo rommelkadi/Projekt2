@@ -62,7 +62,7 @@ public class Game extends Application{
 			
 			
 			//Algus Graafika veits kole veel, aga küll saab 
-			Text text1 = new Text("LOGOQUIZ");
+			Text text1 = new Text("TEA KEDA TERVITAD");
 			//root.setTop(text1);
 			//root.setAlignment(text1, Pos.TOP_CENTER);
 			text1.setId("avaTekst");
@@ -80,7 +80,7 @@ public class Game extends Application{
 			juur2.setTop(hbox);
 			hbox.setId("yles");
 			
-			Text reegliText = new Text(juur.getWidth()/2, juur.getHeight()/2, "Mängu reeglid on väga lihtsad. Vajuta logole ning kirjuta, millega on tegu.");
+			Text reegliText = new Text(juur.getWidth()/2, juur.getHeight()/2, "Mängu reeglid on väga lihtsad. Vajuta pildile ning kirjuta, kellega on tegu.");
 			reegliText.setFont(Font.font ("Verdana", 20));
 			juur.setCenter(reegliText);
 			Button tagasi = new Button("Tagasi avalehele");
@@ -121,16 +121,19 @@ public class Game extends Application{
 			TextField text[] = new TextField[8];
 			
 			ArrayList<String> logs = new ArrayList<String>();
-			String[] logs1 = new String[]{"logo-1.png","logo-2.png","logo-3.png","logo-4.png","logo-5.png"};
+			String[] logs1 = new String[]{"ReinPrank.png","TaivoPungas.png","MargusNiitsoo.png","AivarAnnamaa.png","UrmasTamm.png"};
 			logs.addAll(Arrays.asList(logs1));
+			
 			
 			//panin praegu nii logode vastused arraysse, et texfieldi tööd testida, 
 			//hiljem vist peame kuidagi mugavamalt lahendama selle
-			String[] vastused = new String[]{"chrome","lays","android","apple","nike"};			
+			String[] vastused = new String[]{"Rein Prank","Taivo Pungas","Margus Niitsoo","Aivar Annamaa","Urmas Tamm"};			
 			
-			// minu path enda jaoks :D "file:/C:/Users/Kristi Koppel/workspace/Mäng/src/Mäng/Logod/"
+			// kristi path :D "file:/C:/Users/Kristi Koppel/workspace/Mäng/src/Mäng/Logod/"
+			//kadi path "file:/C:/Users/Kadi/git/Projekt2.1/Projekt2/src/application/"
+
 			for (int i=0; i<5; i++){
-				logod[i] = new ImageView(new Image("file:/C:/Users/Kadi/git/Projekt2.1/Projekt2/src/application/" + logs.get(i)));
+				logod[i] = new ImageView(new Image("file:/C:/Users/Kadi/git/Projekt2.1/Projekt2/src/images/" + logs.get(i)));
 				logod[i].setFitWidth(150);
 				logod[i].setFitHeight(150);
 				flow.getChildren().add(logod[i]);
@@ -282,13 +285,13 @@ public class Game extends Application{
 			         event.consume();
 			     }
 			});
-			//Kui kõik logogd on nähtamatud, ehk õigesti vastatud, siis kuvab ekraanile TUBLI ja Uue leveli nupu... EI TÖÖTA VEEL
+			//Kui kõik logogd on nähtamatud, ehk õigesti vastatud, siis kuvab ekraanile TUBLI ja Uue leveli nupu...L
 			valmis.setOnAction(new EventHandler<ActionEvent>(){
 				public void handle (ActionEvent e) {
 					if(logod[0].isVisible()==false && logod[1].isVisible()==false && logod[2].isVisible()==false && logod[3].isVisible()==false && logod[4].isVisible()==false){
-						Text tubliText = new Text("Tubli! Teadsid kõiki logosid. Liigu nüüd edasi järgmise leveli juurde");
+						Text tubliText = new Text("Tubli! Teadsid kõiki õppejõude. Liigu nüüd edasi järgmise semestri juurde");
 						tubliText.setId("informatsioonTekst");
-						Button uusLevel = new Button("Järgmised logod");
+						Button uusLevel = new Button("Järgmised õppejõud");
 						uusLevel.setAlignment(Pos.BOTTOM_CENTER);
 						uusLevel.setId("uusLevel");
 						flow.getChildren().addAll(tubliText, uusLevel);
@@ -296,14 +299,191 @@ public class Game extends Application{
 						uusLevel.setOnAction(new EventHandler<ActionEvent>() {
 
 				            public void handle(ActionEvent event) {
-				                peaLava.setScene(scene4);				            	
-				                Level2 a = new Level2();
-				                a.level2();
+				            	
+				                peaLava.setScene(scene4);  
+				                FlowPane flow2 = new FlowPane();
+				    			flow2.setId("keskmine");
+				    			juur4.setCenter(flow2);
+				    			juur4.setTop(hbox);
+				    			flow2.setPadding(new Insets(6, 5, 6, 5));
+				    			flow2.setVgap(4);
+				    			flow2.setHgap(4);
+				    			flow2.setPrefWrapLength(200);
+				    			
+				    			GridPane texts2 = new GridPane();
+				    			texts2.setId("alumine");
+				    			juur4.setBottom(texts2);
+				    			texts2.setPadding(new Insets(6,5,6,5));
+				    			texts2.setVgap(4);
+				    			texts2.setHgap(4);
+				    			for(int i = 0; i<5; i++){
+				    				texts2.getColumnConstraints().add(new ColumnConstraints(150));
+				    				}
+				    			String[] logs2 = new String[]{"KalevTarkpea.png","EnoTõnisson.png","AntiIngel1.png","ElinaKallas.png","AnneVillems.png"};			
+				    			String[] vastused2 = new String[]{"Kalev Tarkpea","Eno Tõnisson","Anti Ingel","Elina Kallas","Anne Villems"};
+				    			ArrayList<String> logos2 = new ArrayList<String>();
+				    			logos2.addAll(Arrays.asList(logs2));
+				    			
+				    			//kadi path "file:/C:/Users/Kadi/git/Projekt2.1/Projekt2/src/application/"
+				    			for (int i=0; i<5; i++){
+				    				logod[i] = new ImageView(new Image("file:/C:/Users/Kadi/git/Projekt2.1/Projekt2/src/images/" + logos2.get(i)));
+				    				logod[i].setFitWidth(150);
+				    				logod[i].setFitHeight(150);
+				    				flow2.getChildren().add(logod[i]);
+				    				
+				    				text[i] = new TextField();
+				    				text[i].setPrefWidth(150);		
+				    				
+				    				
+				    			}
+				    			logod[0].	addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+				   			     @Override
+				   			     public void handle(MouseEvent event) {
+				   			    	 
+				   			         System.out.println("vajutasin");
+				   			         texts2.add(text[0],0,0);
+				   			         text[0].setOnKeyPressed(new EventHandler<KeyEvent>()
+				   		        			    {
+				   		        			        @Override
+				   		        			        public void handle(KeyEvent ke)
+				   		        			        {
+				   		        			            if (ke.getCode().equals(KeyCode.ENTER))
+				   		        			            {
+				   		        			            	String vast  = text[0].getText();
+				   		        					         if (vast.equalsIgnoreCase(vastused2[0])){
+				   		        					        	 System.out.println("ÕIGE");
+				   		        					        	 logod[0].setVisible(false);
+				   		        					        	 text[0].setVisible(false);}
+				   		        					         else{
+				   		        					        	 System.out.println("Vale :(");
+				   		        					         }
+				   		        			            }
+				   		        			        }
+				   		        			    });
+				   			      logod[1].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+				   				     @Override
+				   				     public void handle(MouseEvent event) {
+				   				    	 
+				   				         System.out.println("vajutasin");
+				   				         texts2.add(text[1], 1, 0);
+				   				         
+				   				        	 text[1].setOnKeyPressed(new EventHandler<KeyEvent>()
+				   				        			    {
+				   				        			        @Override
+				   				        			        public void handle(KeyEvent ke)
+				   				        			        {
+				   				        			            if (ke.getCode().equals(KeyCode.ENTER))
+				   				        			            {
+				   				        			            	String vast  = text[1].getText();
+				   				        					         if (vast.equalsIgnoreCase(vastused2[1])){
+				   				        					        	 System.out.println("ÕIGE");
+				   				        					        	 logod[1].setVisible(false);
+				   				        					        	 text[1].setVisible(false);}
+				   				        					         else{
+				   				        					        	 System.out.println("Vale :(");
+				   				        					         }
+				   				        			            }
+				   				        			        }
+				   				        			    });
+				   				         
+				   				         event.consume();
+				   				     }
+				   				});
+				   				logod[2].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+				   				     @Override
+				   				     public void handle(MouseEvent event) {
+				   				    	 
+				   				         System.out.println("vajutasin");
+				   				         texts2.add(text[2], 2, 0);
+				   				         text[2].setOnKeyPressed(new EventHandler<KeyEvent>()
+				   			        			    {
+				   			        			        @Override
+				   			        			        public void handle(KeyEvent ke)
+				   			        			        {
+				   			        			        	if (ke.getCode().equals(KeyCode.ENTER))
+				   			        			            {
+				   			        			            	String vast  = text[2].getText();
+				   			        					         if (vast.equalsIgnoreCase(vastused2[2])){
+				   			        					        	 System.out.println("ÕIGE");
+				   			        					        	 logod[2].setVisible(false);
+				   			        					        	 text[2].setVisible(false);}
+				   			        					         else{
+				   			        					        	 System.out.println("Vale :(");
+				   			        					         }
+				   			        			            }
+				   			        			        }
+				   			        			    });
+				   				         event.consume();
+				   				     }
+				   				});
+				   				logod[3].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+				   				     @Override
+				   				     public void handle(MouseEvent event) {
+				   				    	 
+				   				         System.out.println("vajutasin");
+				   				         texts2.add(text[3], 3, 0);
+				   				         event.consume();
+				   				         text[3].setOnKeyPressed(new EventHandler<KeyEvent>()
+				   			        			    {
+				   			        			        @Override
+				   			        			        public void handle(KeyEvent ke)
+				   			        			        {
+				   			        			            if (ke.getCode().equals(KeyCode.ENTER))
+				   			        			            {
+				   			        			            	String vast  = text[3].getText();
+				   			        					         if (vast.equalsIgnoreCase(vastused2[3])){
+				   			        					        	 System.out.println("ÕIGE");
+				   			        					        	 logod[3].setVisible(false);
+				   			        					        	 text[3].setVisible(false);}
+				   			        					         else{
+				   			        					        	 System.out.println("Vale :(");
+				   			        					         }
+				   			        			            }
+				   			        			        }
+				   			        			    });
+				   				     }
+				   				});
+				   				logod[4].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+				   				     @Override
+				   				     public void handle(MouseEvent event) {
+				   				    	 
+				   				         System.out.println("vajutasin");
+				   				         texts2.add(text[4], 4, 0);
+				   				         text[4].setOnKeyPressed(new EventHandler<KeyEvent>()
+				   			        			    {
+				   			        			        @Override
+				   			        			        public void handle(KeyEvent ke)
+				   			        			        {
+				   			        			            if (ke.getCode().equals(KeyCode.ENTER))
+				   			        			            {
+				   			        			            	String vast  = text[4].getText();
+				   			        					         if (vast.equalsIgnoreCase(vastused2[4])){
+				   			        					        	 System.out.println("ÕIGE");
+				   			        					        	 logod[4].setVisible(false);
+				   			        					        	 text[4].setVisible(false);}
+				   			        					         else{
+				   			        					        	 System.out.println("Vale :(");
+				   			        					         }
+				   			        			            }
+				   			        			        }
+				   			        			    });
+				   				         event.consume();
+				   				     }
+				   				});
+				   			         event.consume();
+				   			     }
+				   			});
 				                
 				            }
 				        });
 						
 					}
+					
 					else{
 						int counter = 0;
 						Text pooleliText = new Text("Ei saa edasi liikuda, sul on veel osad vastamata!");
@@ -322,6 +502,9 @@ public class Game extends Application{
 						
 				}
 			});
+			
+			
+			
 			
 			
 			tagasi.setOnAction(new EventHandler<ActionEvent>() {
