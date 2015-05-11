@@ -486,7 +486,7 @@ public class Game extends Application{
 					
 					else{
 						int counter = 0;
-						Text pooleliText = new Text("Ei saa edasi liikuda, sul on veel osad vastamata!");
+						Text pooleliText = new Text("Ei saa edasi liikuda, sa ei tea veel kõiki õppejõude!");
 						flow.getChildren().add(pooleliText);
 						pooleliText.setId("informatsioonTekst");
 						FadeTransition ft = new FadeTransition(Duration.millis(5000));
