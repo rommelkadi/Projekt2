@@ -121,7 +121,7 @@ public class Game extends Application{
 			TextField text[] = new TextField[8];
 			
 			ArrayList<String> logs = new ArrayList<String>();
-			String[] logs1 = new String[]{"ReinPrank.png","TaivoPungas.png","MargusNiitsoo.png","AivarAnnamaa.png","UrmasTamm.png"};
+			String[] logs1 = new String[]{"ReinPrank.png","TaivoPungas.png","NiitsooMargus.png","AivarAnnamaa.png","UrmasTamm.png"};
 			logs.addAll(Arrays.asList(logs1));
 			
 			
@@ -135,7 +135,7 @@ public class Game extends Application{
 			for (int i=0; i<5; i++){
 				logod[i] = new ImageView(new Image("file:/C:/Users/Kadi/git/Projekt2.1/Projekt2/src/images/" + logs.get(i)));
 				logod[i].setFitWidth(150);
-				logod[i].setFitHeight(150);
+				logod[i].setFitHeight(200);
 				flow.getChildren().add(logod[i]);
 				
 				text[i] = new TextField();
@@ -328,7 +328,7 @@ public class Game extends Application{
 				    			for (int i=0; i<5; i++){
 				    				logod[i] = new ImageView(new Image("file:/C:/Users/Kadi/git/Projekt2.1/Projekt2/src/images/" + logos2.get(i)));
 				    				logod[i].setFitWidth(150);
-				    				logod[i].setFitHeight(150);
+				    				logod[i].setFitHeight(200);
 				    				flow2.getChildren().add(logod[i]);
 				    				
 				    				text[i] = new TextField();
