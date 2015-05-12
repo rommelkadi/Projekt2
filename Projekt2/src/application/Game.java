@@ -285,17 +285,20 @@ public class Game extends Application{
 			         event.consume();
 			     }
 			});
+			
+			
 			//Kui kõik logogd on nähtamatud, ehk õigesti vastatud, siis kuvab ekraanile TUBLI ja Uue leveli nupu...L
 			valmis.setOnAction(new EventHandler<ActionEvent>(){
 				public void handle (ActionEvent e) {
 					if(logod[0].isVisible()==false && logod[1].isVisible()==false && logod[2].isVisible()==false && logod[3].isVisible()==false && logod[4].isVisible()==false){
 						Text tubliText = new Text("Tubli! Teadsid kõiki õppejõude. Liigu nüüd edasi järgmise semestri juurde");
 						tubliText.setId("informatsioonTekst");
-						Button uusLevel = new Button("Järgmised õppejõud");
+						Button uusLevel = new Button("Semester 2");
 						uusLevel.setAlignment(Pos.BOTTOM_CENTER);
 						uusLevel.setId("uusLevel");
 						flow.getChildren().addAll(tubliText, uusLevel);
 						
+						//Vajutades uue Leveli nupule, ilmub uus stseen ja jätkub samamoodi
 						uusLevel.setOnAction(new EventHandler<ActionEvent>() {
 
 				            public void handle(ActionEvent event) {
@@ -359,8 +362,10 @@ public class Game extends Application{
 				   		        					        	 System.out.println("Vale :(");
 				   		        					         }
 				   		        			            }
+				   		        			            
 				   		        			        }
 				   		        			    });
+				   			     
 				   			      logod[1].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
 				   				     @Override
@@ -482,7 +487,10 @@ public class Game extends Application{
 				            }
 				        });
 						
+						
 					}
+					
+					
 					
 					else{
 						int counter = 0;
@@ -502,6 +510,7 @@ public class Game extends Application{
 						
 				}
 			});
+			
 			
 			
 			
